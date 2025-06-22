@@ -27,37 +27,58 @@ def generate_email_prompt(product, target_audience, tone, language, call_to_acti
         variation_style = ""
 
 
-    if target_audience == "Neukunden":
-        zielgruppen_note = (
-            "Die Zielgruppe sind Neukunden: Menschen, die sich für Yoga, Achtsamkeit und nachhaltige Produkte interessieren. "
-            "Überzeuge sie von ZENLYFE und führe sie behutsam in die Markenwelt ein.\n"
-        )
-    elif target_audience == "Bestandskunden":
-        zielgruppen_note = (
-            "Die Zielgruppe sind Bestandskunden: Sie kennen die Marke bereits. "
-            "Stärke die Kundenbindung und motiviere sie mit passenden Mehrwerten zum nächsten Kauf.\n"
-        )
-    elif target_audience == "Inaktive Nutzer":
-        zielgruppen_note = (
-            "Die Zielgruppe sind inaktive Nutzer: Sie haben schon einmal gekauft, aber lange nichts mehr. "
-            "Gewinne sie durch gezielte Reaktivierung zurück mit einem vertrauten, aber frischen Ton.\n"
-        )
+    if language == "Englisch":
+        if target_audience == "Neukunden":
+            zielgruppen_note = (
+                "Target group: New customers – people interested in yoga, mindfulness, and sustainable products. "
+                "Introduce them to the ZENLYFE brand world and inspire them to take their first step.\n"
+            )
+        elif target_audience == "Bestandskunden":
+            zielgruppen_note = (
+                "Target group: Existing customers – they already know and value the brand. "
+                "Strengthen their loyalty and encourage further purchases with added value.\n"
+            )
+        elif target_audience == "Inaktive Nutzer":
+            zielgruppen_note = (
+                "Target group: Inactive users – they purchased before but haven’t engaged in a while. "
+                "Reignite their interest with a fresh yet familiar tone.\n"
+            )
+        else:
+            zielgruppen_note = ""
     else:
-        zielgruppen_note = ""
+        if target_audience == "Neukunden":
+            zielgruppen_note = (
+                "Die Zielgruppe sind Neukunden: Menschen, die sich für Yoga, Achtsamkeit und nachhaltige Produkte interessieren. "
+                "Überzeuge sie von ZENLYFE und führe sie behutsam in die Markenwelt ein.\n"
+            )
+        elif target_audience == "Bestandskunden":
+            zielgruppen_note = (
+                "Die Zielgruppe sind Bestandskunden: Sie kennen die Marke bereits. "
+                "Stärke die Kundenbindung und motiviere sie mit passenden Mehrwerten zum nächsten Kauf.\n"
+            )
+        elif target_audience == "Inaktive Nutzer":
+            zielgruppen_note = (
+                "Die Zielgruppe sind inaktive Nutzer: Sie haben schon einmal gekauft, aber lange nichts mehr. "
+                "Gewinne sie durch gezielte Reaktivierung zurück mit einem vertrauten, aber frischen Ton.\n"
+            )
+        else:
+            zielgruppen_note = ""
+
     
     language_instruction = (
     "Formuliere die gesamte E-Mail auf Englisch.\n"
     if language == "Englisch"
     else "Formuliere die gesamte E-Mail auf Deutsch.\n"
 )
-
-    {variation_style}
     ab_test_instruction = (
-        "Erstelle genau eine E-Mail Version inhaltlich für die A/B-Test mit der angegebenen Tonalität."
+        "Create exactly one email version for A/B testing with the given tone. "
+        "Use a distinct structure or argumentation that clearly differs from other variants.\n"
+        if version and language == "Englisch" else
+        "Erstelle genau eine E-Mail Version inhaltlich für die A/B-Test mit der angegebenen Tonalität. "
         "Verwende eine eigene Argumentationsstruktur oder Formulierung, die sich deutlich von anderen Varianten unterscheidet.\n"
         if version else
         "Erstelle genau eine E-Mail-Version basierend auf den folgenden Vorgaben.\n"
-    )
+)
 
     return f"""{version_note}{variation_style}{zielgruppen_note}{language_instruction}{ab_test_instruction}
 Du bist ein erfahrener Marketing-Experte und arbeitest für die ZENLYFE GmbH, ein Unternehmen aus dem Bereich Gesundheit & Lifestyle, spezialisiert auf nachhaltige Produkte für Yoga, Achtsamkeit und mentale Balance. Du hast eine Spezialisierung im Bereich digitale Kommunikation, E-Mail-Marketing und Conversion-Optimierung. Du kennst die Prinzipien der DSGVO und setzt sie konsequent um. Du verstehst, wie man Texte emotional auflädt, die Aufmerksamkeit steigert und mit wenig Worten viel Wirkung erzielt.
