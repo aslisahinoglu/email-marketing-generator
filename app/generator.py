@@ -10,11 +10,22 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def generate_email_prompt(product, target_audience, tone, language, call_to_action, version=None):
     version_note = f"Dies ist Version {version} für einen A/B-Test.\n\n" if version else ""
     if version == "v1":
-        variation_style = "Nutze einen emotionalen, sanften Einstieg, Fokus auf Entschleunigung und Wohlbefinden.\n"
+        variation_style = (
+        "Nutze einen emotionalen, sanften Einstieg, Fokus auf Entschleunigung und Wohlbefinden.\n"
+        if language == "Deutsch" else
+        "Version 1 (v1): Start with a calm, inspirational tone that evokes mindfulness, self-care and emotional connection. "
+        "Focus on the reader's aspiration for balance, wellness, and intentional living.\n"
+    )
     elif version == "v2":
-        variation_style = "Starte mit einem konkreten Problem oder Stressmoment. Formuliere lösungsorientiert und direkt.\n"
+        variation_style = (
+        "Starte mit einem konkreten Problem oder Stressmoment. Formuliere lösungsorientiert und direkt.\n"
+        if language == "Deutsch" else
+        "Version 2 (v2): Start with a specific, relatable stressor or pain point. Be clear and solution-driven. "
+        "Speak to the reader's everyday struggles and position the product as an immediate, credible relief.\n"
+    )
     else:
         variation_style = ""
+
 
     if target_audience == "Neukunden":
         zielgruppen_note = (
