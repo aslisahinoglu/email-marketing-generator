@@ -62,7 +62,6 @@ if st.session_state.result:
     )
 
 if st.button("A/B Test generieren"):
-    # Wenn vorher bereits eine E-Mail generiert wurde, nutze diese als Version A
     if st.session_state.result and "Variante B" not in st.session_state:
         email_a = st.session_state.result
     else:
@@ -70,7 +69,6 @@ if st.button("A/B Test generieren"):
 
     email_b = generate_email(product, target, tone, language, cta, version="v2")
 
-    # Speichern in Session, falls nochmal gebraucht
     st.session_state.ab_test_a = email_a
     st.session_state.ab_test_b = email_b
 
@@ -78,7 +76,7 @@ if st.button("A/B Test generieren"):
     st.code(email_a)
 
     st.markdown(f"### Variante B ({tone} – Version 2)")
-    st.code(email_b)
+    st.code(email_b) 
 
 
 from app.generator import generate_image_prompt
