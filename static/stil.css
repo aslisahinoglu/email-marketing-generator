@@ -1,0 +1,157 @@
+/* ============================== */
+/* Farbpalette                   */
+/* ============================== */
+:root {
+    --white: #FFFFFF;
+    --beige: #F5F1EA;
+    --sage: #B7C4B7;
+    --terracotta: #C66B4E;
+    --text-dark: #2C3532;
+}
+
+/* ============================== */
+/* Basis-Styling                 */
+/* ============================== */
+.stApp {
+    background: linear-gradient(180deg, var(--white) 0%, var(--sage) 100%) !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+}
+
+.stApp > header {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================== */
+/* Header & Titel                */
+/* ============================== */
+h1,
+.css-10trblm,
+div[data-testid="stTitle"],
+.stTitle {
+    background: linear-gradient(120deg, var(--sage) 0%, var(--terracotta) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem !important;
+    font-weight: 600 !important;
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.stTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sage) 0%, var(--terracotta) 100%);
+    border-radius: 2px;
+}
+
+/* ============================== */
+/* Container & Layout            */
+/* ============================== */
+.block-container {
+    max-width: 800px !important;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.css-1d391kg {
+    box-shadow: none !important;
+}
+
+.stMarkdown {
+    max-width: 800px !important;
+    margin: 2rem auto !important;
+}
+
+.stTextArea {
+    max-width: 800px !important;
+    margin: 1rem auto !important;
+}
+
+/* ============================== */
+/* Inputs: Selectbox, TextInput  */
+/* ============================== */
+.stSelectbox,
+.stTextInput {
+    background-color: var(--beige);
+    border-radius: 8px;
+    border: 1px solid var(--sage);
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    max-width: 500px !important;
+    margin: 0rem auto !important;
+}
+
+.stSelectbox:hover,
+.stTextInput:hover {
+    border-color: var(--terracotta);
+}
+
+/* ============================== */
+/* Text Area                     */
+/* ============================== */
+.stTextArea > textarea {
+    background-color: var(--beige);
+    border: 1px solid var(--sage);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* ============================== */
+/* Buttons                       */
+/* ============================== */
+.stButton {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 500px !important;
+    margin: 0rem auto !important;
+}
+
+.stButton > button,
+.stDownloadButton > button {
+    background-color: var(--terracotta) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.6rem 1.2rem !important;
+    transition: all 0.3s ease !important;
+    margin: 0 10px !important;
+    min-width: 120px;
+}
+
+.stButton > button:hover {
+    background-color: var(--beige) !important;
+    color: black !important;
+    transform: translateY(-1px);
+}
+
+.stDownloadButton > button:hover {
+    background-color: var(--beige) !important;
+    color: black !important;
+}
+
+/* ============================== */
+/* Button Wrapper (Zentrierung)  */
+/* ============================== */
+div.row-widget.stButton {
+    text-align: center;
+    margin: 2rem auto !important;
+    max-width: 800px;
+}
+
+.st-bb {
+    background-color: white;
+}
